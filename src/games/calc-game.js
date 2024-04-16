@@ -3,9 +3,9 @@ import { getRandomInt } from '../index.js';
 export const rules = 'What is the result of the expression?';
 
 export const calcGame = () => {
-  const num1 = getRandomInt(100);
-  const num2 = getRandomInt(100);
-  const num3 = getRandomInt(3);
+  const num1 = getRandomInt(1, 100);
+  const num2 = getRandomInt(1, 100);
+  const num3 = getRandomInt(0, 3);
   let question = '';
   let answer = '';
 
