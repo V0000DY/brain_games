@@ -1,12 +1,17 @@
-import { getRandomInt } from '../index.js';
+import runGame from '../index.js';
+import getRandomInt from '../utils.js';
+
+const isEven = (number) => number % 2 === 0;
 
 export const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 export const evenGame = () => {
-  const num1 = getRandomInt(1, 100);
+  const num = getRandomInt(1, 99);
 
-  const question = `${num1}`;
-  const answer = num1 % 2 === 0 ? 'yes' : 'no';
+  const question = String(num);
+  const answer = isEven(num) ? 'yes' : 'no';
 
   return { question, answer };
 };
+
+export default () => runGame(rules, evenGame);

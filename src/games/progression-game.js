@@ -1,13 +1,14 @@
-import { getRandomInt } from '../index.js';
+import runGame from '../index.js';
+import getRandomInt from '../utils.js';
 
 export const rules = 'What number is missing in the progression?';
 
-const getProgressionArr = (startNum, length, step) => {
-  let num = startNum;
+const getProgressionArr = (startProgressionNum, progressionLength, progressionStep) => {
+  let num = startProgressionNum;
   const progression = [num];
 
-  for (let i = 0; i < length; i += 1) {
-    num += step;
+  for (let i = 0; i < progressionLength; i += 1) {
+    num += progressionStep;
     progression.push(num);
   }
 
@@ -15,14 +16,16 @@ const getProgressionArr = (startNum, length, step) => {
 };
 
 export const progressionGame = () => {
-  const startnum = getRandomInt(1, 20);
-  const lengtH = getRandomInt(10, 15);
-  const steP = getRandomInt(1, 10);
-  const missNumIndex = getRandomInt(1, lengtH);
-  const order = getProgressionArr(startnum, lengtH, steP);
-  const answer = String(order[missNumIndex]);
-  order[missNumIndex] = '..';
-  const question = order.join(' ');
+  const startProgNum = getRandomInt(1, 20);
+  const progLength = getRandomInt(10, 15);
+  const progStep = getRandomInt(1, 10);
+  const hiddenNumIndex = getRandomInt(1, progLength);
+  const progArr = getProgressionArr(startProgNum, progLength, progStep);
+  const answer = String(progArr[hiddenNumIndex]);
+  progArr[hiddenNumIndex] = '..';
+  const question = progArr.join(' ');
 
   return { question, answer };
 };
+
+export default () => runGame(rules, progressionGame);

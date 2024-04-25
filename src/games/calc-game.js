@@ -1,27 +1,39 @@
-import { getRandomInt } from '../index.js';
+import runGame from '../index.js';
+import getRandomInt from '../utils.js';
 
-export const rules = 'What is the result of the expression?';
+const rules = 'What is the result of the expression?';
 
-export const calcGame = () => {
-  const num1 = getRandomInt(1, 100);
-  const num2 = getRandomInt(1, 100);
-  const num3 = getRandomInt(0, 3);
-  let question = '';
-  let answer = '';
+const evalExpression = (expressionArr) => {
+  const [number1, operator, number2] = expressionArr;
+  let result = 0;
 
-  switch (num3) {
-    case 0:
-      question = `${num1} + ${num2}`;
-      answer = String(num1 + num2);
+  switch (operator) {
+    case '+':
+      result = number1 + number2;
       break;
-    case 1:
-      question = `${num1} - ${num2}`;
-      answer = String(num1 - num2);
+    case '-':
+      result = number1 - number2;
+      break;
+    case '*':
+      result = number1 * number2;
       break;
     default:
-      question = `${num1} * ${num2}`;
-      answer = String(num1 * num2);
+      throw new Error(`Unknown operator type: ${operator}`);
   }
+
+  return result;
+};
+
+const calcGame = () => {
+  const num1 = getRandomInt(1, 99);
+  const num2 = getRandomInt(1, 99);
+  const operations = ['+', '-', '*'];
+  const operationIndex = getRandomInt(0, 2);
+  const expression = [num1, operations[operationIndex], num2];
+  const question = expression.join(' ');
+  const answer = String(evalExpression(expression));
 
   return { question, answer };
 };
+
+export default () => runGame(rules, calcGame);

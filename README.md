@@ -32,7 +32,8 @@ Node version: 12.19.0
 ## Install
 ### Installation via command line
 ```bash
-npm install @hexlet/code
+git clone https://github.com/V0000DY/frontend-project-44.git
+npm link
 ```
 ## Basic commands
 ### Greetings!
