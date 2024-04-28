@@ -3,35 +3,29 @@ import getRandomInt from '../utils.js';
 
 const rules = 'What is the result of the expression?';
 
-const evalExpression = (expressionArr) => {
-  const [number1, operator, number2] = expressionArr;
-  let result = 0;
-
-  switch (operator) {
+const evalExpression = (number1, number2, operation) => {
+  switch (operation) {
     case '+':
-      result = number1 + number2;
-      break;
+      return number1 + number2;
     case '-':
-      result = number1 - number2;
-      break;
+      return number1 - number2;
     case '*':
-      result = number1 * number2;
-      break;
+      return number1 * number2;
     default:
-      throw new Error(`Unknown operator type: ${operator}`);
+      throw new Error(`Unknown operation type: ${operation}`);
   }
-
-  return result;
 };
 
 const calcGame = () => {
+  const operations = ['+', '-', '*'];
+  const lastOperationIndex = operations.length - 1;
+
   const num1 = getRandomInt(1, 99);
   const num2 = getRandomInt(1, 99);
-  const operations = ['+', '-', '*'];
-  const operationIndex = getRandomInt(0, 2);
-  const expression = [num1, operations[operationIndex], num2];
-  const question = expression.join(' ');
-  const answer = String(evalExpression(expression));
+  const operationIndex = getRandomInt(0, lastOperationIndex);
+  const operation = operations[operationIndex];
+  const question = `${num1} ${operation} ${num2}`;
+  const answer = String(evalExpression(num1, num2, operation));
 
   return { question, answer };
 };

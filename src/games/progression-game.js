@@ -1,9 +1,9 @@
 import runGame from '../index.js';
 import getRandomInt from '../utils.js';
 
-export const rules = 'What number is missing in the progression?';
+const rules = 'What number is missing in the progression?';
 
-const getProgressionArr = (startProgressionNum, progressionLength, progressionStep) => {
+const getProgression = (startProgressionNum, progressionLength, progressionStep) => {
   let num = startProgressionNum;
   const progression = [num];
 
@@ -15,15 +15,15 @@ const getProgressionArr = (startProgressionNum, progressionLength, progressionSt
   return progression;
 };
 
-export const progressionGame = () => {
-  const startProgNum = getRandomInt(1, 20);
-  const progLength = getRandomInt(10, 15);
-  const progStep = getRandomInt(1, 10);
-  const hiddenNumIndex = getRandomInt(1, progLength);
-  const progArr = getProgressionArr(startProgNum, progLength, progStep);
-  const answer = String(progArr[hiddenNumIndex]);
-  progArr[hiddenNumIndex] = '..';
-  const question = progArr.join(' ');
+const progressionGame = () => {
+  const start = getRandomInt(1, 20);
+  const length = getRandomInt(10, 15);
+  const step = getRandomInt(1, 10);
+  const hiddenNumIndex = getRandomInt(1, length);
+  const progression = getProgression(start, length, step);
+  const answer = String(progression[hiddenNumIndex]);
+  progression[hiddenNumIndex] = '..';
+  const question = progression.join(' ');
 
   return { question, answer };
 };

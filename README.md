@@ -33,6 +33,8 @@ Node version: 12.19.0
 ### Installation via command line
 ```bash
 git clone https://github.com/V0000DY/frontend-project-44.git
+cd frontend-project-44
+npm install
 npm link
 ```
 ## Basic commands
