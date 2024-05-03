@@ -1,6 +1,7 @@
 import runGame from '../index.js';
 import getRandomInt from '../utils.js';
 
+const operations = ['+', '-', '*'];
 const rules = 'What is the result of the expression?';
 
 const evalExpression = (number1, number2, operation) => {
@@ -16,8 +17,7 @@ const evalExpression = (number1, number2, operation) => {
   }
 };
 
-const calcGame = () => {
-  const operations = ['+', '-', '*'];
+const makeCalcQuestion = () => {
   const lastOperationIndex = operations.length - 1;
 
   const num1 = getRandomInt(1, 99);
@@ -30,4 +30,4 @@ const calcGame = () => {
   return { question, answer };
 };
 
-export default () => runGame(rules, calcGame);
+export default () => runGame(rules, makeCalcQuestion);

@@ -5,7 +5,7 @@ const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const isEven = (number) => number % 2 === 0;
 
-const evenGame = () => {
+const makeEvenQuestion = () => {
   const num = getRandomInt(1, 99);
 
   const question = String(num);
@@ -14,4 +14,4 @@ const evenGame = () => {
   return { question, answer };
 };
 
-export default () => runGame(rules, evenGame);
+export default () => runGame(rules, makeEvenQuestion);

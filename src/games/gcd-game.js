@@ -3,13 +3,13 @@ import getRandomInt from '../utils.js';
 
 const rules = 'Find the greatest common divisor of given numbers.';
 
-const getGсd = (number1, number2) => {
-  if (number2 > number1) return getGсd(number2, number1);
-  if (!number2) return number1;
-  return getGсd(number2, number1 % number2);
+const getGсd = (num1, num2) => {
+  if (num2 > num1) return getGсd(num2, num1);
+  if (!num2) return num1;
+  return getGсd(num2, num1 % num2);
 };
 
-const gcdGame = () => {
+const makeGcdQuestion = () => {
   const num1 = getRandomInt(1, 99);
   const num2 = getRandomInt(1, 99);
   const question = `${num1} ${num2}`;
@@ -19,4 +19,4 @@ const gcdGame = () => {
   return { question, answer };
 };
 
-export default () => runGame(rules, gcdGame);
+export default () => runGame(rules, makeGcdQuestion);
